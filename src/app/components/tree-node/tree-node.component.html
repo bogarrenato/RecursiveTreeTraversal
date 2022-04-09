@@ -1,0 +1,12 @@
+<a (click)="selectEvents.emit( node )" class="label">
+  {{ node?.label }}
+</a>
+<div *ngIf="node?.children?.length" class="children">
+  <ng-template ngFor let-child [ngForOf]="node.children">
+    <my-tree-node
+      [node]="child"
+      [selectedNode]="selectedNode"
+      (select)="selectEvents.emit( $event )">
+    </my-tree-node>
+  </ng-template>
+</div>
